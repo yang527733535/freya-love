@@ -32,7 +32,8 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
-          script: cd /opt
+          script: |
+          cd /opt
           touch 123.md
 
 
