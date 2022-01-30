@@ -43,6 +43,6 @@ jobs:
           # 服务器ip：换成你的服务器IP
           REMOTE_HOST: "117.50.173.128"
           # 用户
-          REMOTE_USER: "ubuntu"
+          REMOTE_USER: "root"
           # 目标地址
           TARGET: "/opt/freya-love"
