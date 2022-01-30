@@ -1,30 +1,38 @@
-# 建立一个名为CI的工作流
-name: CI
-​
-# 监听 master上的push事件
+name: 打包应用并上传阿里云
+
 on:
   push:
-    branches: [ master ]
-​
-# 开始任务
+    branches:
+      - master
+
 jobs:
-  # 建立一个名为 build 的job
   build:
-    # 在最新的乌班图环境进行工作
-    runs-on: ubuntu-latest
-​
-    # 开始设置构建步骤
-    steps:
-    # 这是github官方的一个action，用于clone该仓库的源码到工作流中，
-    - uses: actions/checkout@v2
-​
-    # 命名这个步骤为构建Build
-    - name: Build
-      // 运行 安装和打包任务
-      run: npm install && npm run build
-​
-    # 命名这个任务为发布Deploy
-    - name: Deploy
+    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+    runs-on: ubuntu-latest
+    steps:
+      # 获取源码
+      - name: 迁出代码
+        # 使用action库  actions/checkout获取源码
+        uses: actions/checkout@master
+      # 安装Node10
+
+      - name: 安装node.js
+        # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.0.0
+
+      # 安装依赖
+      - name: 安装依赖
+        run: npm install
+
+      # 打包
+      - name: 打包
+        run: npm run build
+
+      # 上传阿里云
+   # 命名这个任务为发布Deploy
+    - name: 发布
       # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
       uses: cross-the-world/scp-pipeline@master
       env:
@@ -37,4 +45,3 @@ jobs:
         connect_timeout: 10s
         local: './dist/*'
         remote: /usr/share/nginx/html
-        
