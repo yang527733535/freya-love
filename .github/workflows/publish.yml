@@ -25,16 +25,24 @@ jobs:
     # - name: Build                 # 第三步，打包代码
     #   run: npm run build --if-present
 
-    - name: Deploy to Server      # 第四步，rsync推送文件
-      uses: AEnterprise/rsync-deploy@v1.0  # 使用别人包装好的步骤镜像
-      env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}   # 引用配置，SSH私钥
-        ARGS: -avz --delete --exclude='*.pyc'   # rsync参数，排除.pyc文件
-        SERVER_PORT: '22'  # SSH端口
-        FOLDER: ./build/*  # 要推送的文件夹，路径相对于代码仓库的根目录
-        SERVER_IP: '117.50.173.128'  # 引用配置，服务器的host名（IP或者域名domain.com）
-        USERNAME: ${{ secrets.SSH_USERNAME }}  # 引用配置，服务器登录名
-        SERVER_DESTINATION: /www/wwwroot/lmsworld.cn/   # 部署到目标文件夹
+    - name: Deploy      # 第四步，rsync推送文件
+      uses: appleboy/ssh-action@master  # 使用别人包装好的步骤镜像
+      with:
+          hosts: 107.148.243.178
+          user: root
+          host: 107.148.243.178
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          port: ${{ secrets.REMOTE_PORT }}
+
+      # env:
+      #   DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}   # 引用配置，SSH私钥
+      #   ARGS: -avz --delete --exclude='*.pyc'   # rsync参数，排除.pyc文件
+      #   SERVER_PORT: '22'  # SSH端口
+      #   FOLDER: ./build/*  # 要推送的文件夹，路径相对于代码仓库的根目录
+      #   SERVER_IP: '117.50.173.128'  # 引用配置，服务器的host名（IP或者域名domain.com）
+      #   USERNAME: ${{ secrets.SSH_USERNAME }}  # 引用配置，服务器登录名
+      #   SERVER_DESTINATION: /www/wwwroot/lmsworld.cn/   # 部署到目标文件夹
 
     # - name: Restart server   # 第五步，重启服务
     #   uses: appleboy/ssh-action@master
