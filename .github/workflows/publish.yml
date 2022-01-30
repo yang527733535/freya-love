@@ -33,9 +33,9 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-          cd /opt
-          touch 123.md
-
+             cd /opt
+             touch 123.md
+            docker pull baiyuetribe/kamifaka
 
 
       # env:
