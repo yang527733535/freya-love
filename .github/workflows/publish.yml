@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-             cd /opt/fre/
+             cd /opt/prod-freya-love/
              git pull origin master
 
 
