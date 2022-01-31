@@ -6,6 +6,8 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
+    "upprod":"git add .&&git commit -m '添加新功能' && git push prod master",
+    "uporigin":"git push origin master",
     "test:coverage": "umi-test --coverage"
   },
   "gitHooks": {
