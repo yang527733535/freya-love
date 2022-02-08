@@ -54,10 +54,10 @@ export default (props) => {
         >
           <img src={footertype === 'hall' ? SelectHome : Home}></img>
           {footertype === 'hall' && (
-            <div className={styles['footer_item_title']}>Discover</div>
+            <div className={styles['footer_item_title']}>主页</div>
           )}
         </div>
-        <div
+        {/* <div
           onClick={() => {
             history.push('/hall/mybook');
             setfootertype('mybook');
@@ -68,7 +68,7 @@ export default (props) => {
           {footertype === 'mybook' && (
             <div className={styles['footer_item_title']}>MyBooks</div>
           )}
-        </div>
+        </div> */}
         <div
           onClick={() => {
             history.push('/hall/userinfo');
@@ -78,7 +78,7 @@ export default (props) => {
         >
           <img src={footertype === 'userinfo' ? selectprofile : profile}></img>
           {footertype === 'userinfo' && (
-            <div className={styles['footer_item_title']}>Profile</div>
+            <div className={styles['footer_item_title']}>个人中心</div>
           )}
         </div>
       </div>

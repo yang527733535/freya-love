@@ -7,9 +7,9 @@ const NormalBookShelf: FC<Iprops> = (): ReactElement => {
   return (
     <>
       <div className={styles['bookShelfheader']}>
-        <div className={styles['left_bookShelfheader']}>Weekly Update</div>
+        <div className={styles['left_bookShelfheader']}>日常记录</div>
         <div className={styles['rigth_bookShelfheader']}>
-          See All
+          查看全部
           <img
             className={styles['rigth_bookShelfheader_img']}
             src={icon_arr_r}

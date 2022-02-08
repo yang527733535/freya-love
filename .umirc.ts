@@ -3,6 +3,7 @@ import postCssPxToViewport from 'postcss-px-to-viewport';
 
 export default defineConfig({
   hash: true,
+  history: { type: 'hash' },
   nodeModulesTransform: {
     type: 'none',
   },
