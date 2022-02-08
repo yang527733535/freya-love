@@ -2,6 +2,7 @@ import { defineConfig } from 'umi';
 import postCssPxToViewport from 'postcss-px-to-viewport';
 
 export default defineConfig({
+  hash: true,
   nodeModulesTransform: {
     type: 'none',
   },
