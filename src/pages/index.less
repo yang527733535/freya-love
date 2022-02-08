@@ -1,3 +1,26 @@
-.title {
-  background: rgb(121, 242, 157);
+.header {
+  width: 375px;
+  height: 58px;
+  background: rgba(255, 255, 255, 0.39);
+  opacity: 1;
+}
+
+:global {
+  .ant-tabs-top > .ant-tabs-nav::before,
+  .ant-tabs-bottom > .ant-tabs-nav::before,
+  .ant-tabs-top > div > .ant-tabs-nav::before,
+  .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    border-bottom: 0px solid #f0f0f0;
+    content: '';
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
 }

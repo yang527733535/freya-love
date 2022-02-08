@@ -1,0 +1,84 @@
+.myFixTabs {
+}
+.barstyle {
+  position: fixed;
+  top: 58px;
+  // width: 100vw;
+}
+
+.myTab {
+  width: 100%;
+  overflow-x: hidden;
+  :global {
+    .ant-tabs-top > .ant-tabs-nav::before,
+    .ant-tabs-bottom > .ant-tabs-nav::before,
+    .ant-tabs-top > div > .ant-tabs-nav::before,
+    .ant-tabs-bottom > div > .ant-tabs-nav::before {
+      //   position: absolute;
+      //   right: 0;
+      //   left: 0;
+      border-bottom: 0px solid #f0f0f0 !important;
+      //   content: '';
+    }
+    .ant-tabs-nav {
+      //   background-color: orchid;
+      padding: 8px 15px;
+      height: 44px;
+      margin-bottom: 0px;
+      border-bottom: 0px;
+      background: rgba(255, 255, 255);
+    }
+    .ant-tabs-tab-btn {
+      font-size: 19px;
+      font-family: 'SofiaPro';
+      font-weight: bold;
+      line-height: 13px;
+      color: #221e29;
+      opacity: 1;
+    }
+    // .ant-tabs-tab-btn {
+    //   font-size: 15px;
+    //   font-family: Sofia Pro;
+    //   font-weight: 500;
+    //   line-height: 13px;
+    //   color: #9c9cd0;
+    //   opacity: 1;
+    //   text-shadow: 0 0 0.25px currentColor;
+    // }
+
+    .ant-tabs-tab-active {
+      font-size: 19px;
+      font-family: Sofia Pro;
+      font-weight: bold;
+      line-height: 13px;
+      color: #221e29;
+      opacity: 1;
+    }
+  }
+}
+
+.CATE {
+  background: goldenrod;
+  width: 100vw;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Discover {
+  background-color: gray;
+  height: 1400px;
+  // margin-top: 58px;
+}
+
+.logoContent {
+  position: fixed;
+  z-index: 100001;
+  right: 10px;
+  top: 68px;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}

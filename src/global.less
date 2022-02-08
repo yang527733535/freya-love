@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'SofiaPro';
+  src: url('./assets/family/SofiaPro.ttf');
+  vertical-align: baseline;
+}
+
+no-scroll-bar {
+  scrollbar-width: none;
+  /* firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  & ::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari */
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+html,
+body,
+div {
+  margin: 0;
+  padding: 0;
+  // background: rgba(240, 240, 250, 0.39);
+}
+body {
+  background: rgba(240, 240, 250, 0.39);
+}
+
+.ant-tabs-top > .ant-tabs-nav::before,
+.ant-tabs-bottom > .ant-tabs-nav::before,
+.ant-tabs-top > div > .ant-tabs-nav::before,
+.ant-tabs-bottom > div > .ant-tabs-nav::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-bottom: 0px solid #f0f0f0 !important;
+  content: '';
+}
+
+// .ant-carousel .slick-dots li.slick-active {
+//   width: 7px;
+//   height: 7px;
+//   background: rgba(255, 255, 255, 0.39);
+//   border-radius: 50%;
+//   opacity: 1;
+// }
+// .ant-carousel .slick-dots-bottom {
+//   width: 7px;
+//   height: 7px;
+//   background: rgba(255, 255, 255, 0.2);
+//   border-radius: 50%;
+//   opacity: 1;
+// }
+body::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,242 @@
+.myContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.myContainer::-webkit-scrollbar {
+  display: none;
+}
+.header {
+  height: 58px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  background: rgba(255, 255, 255);
+  top: 0;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: flex;
+  .diamondInput {
+    width: 83px;
+    height: 28px;
+    background: rgba(240, 240, 250, 0.39);
+    opacity: 1;
+    border-radius: 14px;
+    margin-top: 15px;
+    margin-left: 61px;
+    position: relative;
+    .add {
+      height: 13px;
+      width: 13px;
+      position: absolute;
+      z-index: 8;
+      bottom: -3px;
+      right: 60px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .ticket {
+      position: absolute;
+      left: -18px;
+      height: 38px;
+      width: 38px;
+      top: -5px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .diamondInput_num {
+      width: 46px;
+      height: 21px;
+      font-size: 17px;
+      font-family: 'SofiaPro';
+      font-weight: bold;
+      line-height: 21px;
+      color: #48415f;
+      opacity: 1;
+      position: absolute;
+      right: 13px;
+      top: 3px;
+    }
+  }
+
+  .diamondInput2 {
+    width: 83px;
+    height: 28px;
+    background: rgba(240, 240, 250, 0.39);
+    opacity: 1;
+    margin-left: 20px;
+    border-radius: 14px;
+    margin-top: 15px;
+    // margin-left: 61px;
+    position: relative;
+    .add {
+      height: 13px;
+      width: 13px;
+      position: absolute;
+      z-index: 8;
+      bottom: -3px;
+      right: 60px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .ticket {
+      position: absolute;
+      left: -18px;
+      height: 38px;
+      width: 38px;
+      top: -5px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .diamondInput_num {
+      width: 46px;
+      height: 21px;
+      font-size: 17px;
+      font-family: 'SofiaPro';
+      font-weight: bold;
+      line-height: 21px;
+      color: #48415f;
+      opacity: 1;
+      position: absolute;
+      right: 13px;
+      top: 3px;
+    }
+  }
+  .header_logo {
+    width: 94px;
+    min-width: 94px;
+    height: 42px;
+    margin-top: 8px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.content {
+  margin-top: 58px;
+  width: 100%;
+  // height: 1042px;
+  flex: 1;
+  margin-bottom: 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.footer {
+  position: fixed;
+  height: 60px;
+  background: rgba(255, 255, 255, 1);
+  width: 100%;
+  bottom: 0;
+  padding: 0px 21px;
+  display: flex;
+  .footer_item {
+    flex: 1;
+    // background-color: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .footer_item_title {
+      width: 72px;
+      height: 18px;
+      font-size: 15px;
+      font-family: 'SofiaPro';
+      font-weight: bold;
+      text-align: center;
+      color: #9676ff;
+      opacity: 1;
+    }
+    img {
+      width: 31px;
+      height: 31px;
+    }
+  }
+}
+
+.keyframesFunction (@name,@content) {
+  // @变量可以写你想要传进这个函数所用的参数
+  @keyframes @name {
+    @content(); //你想要执行的动画效果
+  }
+}
+.ticket {
+  .keyframesFunction (ticket,{
+      0%{ transform: scale3d(1, 1, 1);}
+      50%{transform: scale3d(1.1, 1.1, 1.1);}
+      100%{transform: scale3d(1, 1, 1);}
+  });;
+  animation: ticket 1s infinite;
+}
+
+// @keyframes breathe {
+//   0% {
+//     // box-shadow: 0px 13px 30px -10px rgba(0, 0, 0, 0.8);
+//     transform: scale3d(1, 1, 1);
+//   }
+
+//   50% {
+//     // box-shadow: 0px 60px 30px -30px rgba(0, 0, 0, 0.3);
+//     transform: scale3d(1.1, 1.1, 1.1);
+//   }
+
+//   100% {
+//     // box-shadow: 0px 13px 30px -10px rgba(0, 0, 0, 0.8);
+//     transform: scale3d(1, 1, 1);
+//   }
+// }
+
+.inputBox {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  height: 58px;
+  background-color: white;
+  opacity: 1;
+  & div {
+    color: red;
+    position: absolute;
+    left: 10px;
+    top: 19px;
+    cursor: pointer;
+    & img {
+      height: 19px;
+      width: 19px;
+    }
+  }
+  & input {
+    caret-color: rgba(150, 118, 255, 0.39);
+    border: 0px;
+    width: 307px;
+    height: 32px;
+    top: 13px;
+    right: 15px;
+    padding-left: 17px;
+    padding-top: 7px;
+    background: rgba(240, 240, 250, 0.39);
+    opacity: 1;
+    border-radius: 16px;
+    position: absolute;
+    font-size: 15px;
+    font-family: SofiaPro;
+    font-weight: 500;
+    line-height: 23px;
+    color: #b4b4dd;
+    opacity: 1;
+  }
+  & input::-webkit-input-placeholder {
+    color: #b4b4dd;
+  }
+  & input:focus {
+    border-color: #66afe9;
+    outline: 0;
+  }
+}
