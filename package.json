@@ -6,8 +6,8 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
-    "upprod":"git add . && git commit -m '🐴增加新功能' && git push prod master",
-    "uporigin":"git add . && git commit -m '🐴增加新功能' && git push origin master",
+    "upprod": "git add . && git commit -m '🐴增加新功能' && git push prod master",
+    "uporigin": "git add . && git commit -m '🐴增加新功能' && git push origin master",
     "test:coverage": "umi-test --coverage"
   },
   "gitHooks": {
@@ -32,6 +32,7 @@
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.5.20",
+    "axios": "^0.25.0",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
     "typescript": "^4.1.2",
