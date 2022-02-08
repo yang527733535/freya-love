@@ -32,10 +32,10 @@ const Hall: FC<Iprops> = ({}): ReactElement => {
           zIndex: 10,
         }}
       >
-        <TabPane style={{ overflowY: 'auto' }} tab="图片" key="Discover">
+        <TabPane style={{ overflowY: 'auto' }} tab="Images" key="Discover">
           <Discover />
         </TabPane>
-        <TabPane style={{ overflow: 'auto' }} tab="视频" key="Category">
+        <TabPane style={{ overflow: 'auto' }} tab="Videos" key="Category">
           <div className={styles.CATE}>123</div>
         </TabPane>
       </Tabs>

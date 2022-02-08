@@ -25,6 +25,10 @@ const Discover: FC<IProps> = ({}: IProps): ReactElement => {
     <div className={styles['myDiscoverBox']}>
       <BookCarouselImg bannerItem={bannerItem}></BookCarouselImg>
       <NormalBookShelf></NormalBookShelf>
+      <NormalBookShelf></NormalBookShelf>
+      <NormalBookShelf></NormalBookShelf>
+      <NormalBookShelf></NormalBookShelf>
+      <div>瀑布流</div>
     </div>
   );
 };

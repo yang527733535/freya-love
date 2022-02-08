@@ -31,7 +31,7 @@ export default (props) => {
           <div>
             <img className={styles['ticket']} src={iconticket}></img>
           </div>
-          <div className={styles['diamondInput_num']}>65535</div>
+          <div className={styles['diamondInput_num']}>9999</div>
         </div>
         <div className={styles['diamondInput2']}>
           <div>
@@ -40,7 +40,7 @@ export default (props) => {
           <div>
             <img className={styles['ticket']} src={diamond}></img>
           </div>
-          <div className={styles['diamondInput_num']}>65535</div>
+          <div className={styles['diamondInput_num']}>9999</div>
         </div>
       </div>
       <div className={styles['content']}>{props.children}</div>
