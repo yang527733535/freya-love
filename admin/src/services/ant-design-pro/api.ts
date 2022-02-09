@@ -103,6 +103,17 @@ export async function addRule(options?: { [key: string]: any }) {
     ...(options || {}),
   });
 }
+export async function reqAddImg(params?: { [key: string]: any }) {
+  return request(`${baseUrl}/images`, {
+    headers: {
+      authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+    params: {
+      ...params,
+    },
+    method: 'POST',
+  });
+}
 
 /** 删除规则 DELETE /api/rule */
 export async function removeRule(options?: { [key: string]: any }) {

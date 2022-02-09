@@ -1,10 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Modal } from 'antd';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable, { TableDropdown } from '@ant-design/pro-table';
 import { Imgrule } from '@/services/ant-design-pro/api';
-
+import ImgForm from './Form/index';
 const columns = [
   {
     dataIndex: 'id',
@@ -65,8 +65,18 @@ const columns = [
 
 export default function ImgTable() {
   const actionRef = useRef<ActionType>();
+  const [showForm, setshowForm] = useState<boolean>();
   return (
     <div>
+      <Modal
+        onCancel={() => {
+          setshowForm(false);
+        }}
+        footer={null}
+        visible={showForm}
+      >
+        <ImgForm></ImgForm>
+      </Modal>
       <ProTable
         columns={columns}
         actionRef={actionRef}
@@ -94,7 +104,14 @@ export default function ImgTable() {
         dateFormatter="string"
         headerTitle="图片列表"
         toolBarRender={() => [
-          <Button key="button" icon={<PlusOutlined />} type="primary">
+          <Button
+            onClick={() => {
+              setshowForm(true);
+            }}
+            key="button"
+            icon={<PlusOutlined />}
+            type="primary"
+          >
             新建
           </Button>,
         ]}
