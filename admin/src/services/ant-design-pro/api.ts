@@ -67,7 +67,7 @@ export async function getNotices(options?: { [key: string]: any }) {
 }
 
 /** 获取规则列表 GET /api/rule */
-export async function rule(
+export async function Imgrule(
   params: {
     // query
     /** 当前的页码 */
@@ -77,13 +77,15 @@ export async function rule(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.RuleList>('/api/rule', {
-    method: 'GET',
+  const data = request<API.RuleList>(`${baseUrl}/images/page/list`, {
+    method: 'POST',
     params: {
       ...params,
     },
     ...(options || {}),
   });
+  console.log('data', data);
+  return data;
 }
 
 /** 新建规则 PUT /api/rule */

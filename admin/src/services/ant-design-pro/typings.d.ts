@@ -55,6 +55,18 @@ declare namespace API {
     createdAt?: string;
     progress?: number;
   };
+  type imgListItem = {
+    category_id?: number;
+    content?: string;
+    created_at?: string;
+    id?: string;
+    img_url?: string;
+    show_time?: string;
+    title?: string;
+    status?: number;
+    updated_at?: string;
+    user_id?: number;
+  };
 
   type RuleList = {
     data?: RuleListItem[];

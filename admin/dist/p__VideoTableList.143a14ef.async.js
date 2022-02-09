@@ -1,7 +1,7 @@
 (self.webpackChunkant_design_pro = self.webpackChunkant_design_pro || []).push([
-  [947],
+  [658],
   {
-    13036: function (me, A, s) {
+    15204: function (me, A, s) {
       'use strict';
       s.r(A),
         s.d(A, {
@@ -9,9 +9,9 @@
             return de;
           },
         });
-      var ge = s(53053),
+      var he = s(53053),
         W = s(79198),
-        he = s(40279),
+        ge = s(40279),
         R = s(88591),
         pe = s(58408),
         G = s(36838),
@@ -19,7 +19,7 @@
         x = s(28211),
         H = s(36531),
         ve = s(71838),
-        g = s(99128),
+        h = s(99128),
         v = s(66940),
         z = s(70486),
         i = s.n(z),
@@ -31,7 +31,7 @@
         X = s(50553),
         k = s(32007),
         D = s(4288),
-        B = s(30791),
+        V = s(30791),
         q = s(28891),
         be = s(64049),
         _ = s(43334),
@@ -44,7 +44,7 @@
           var t = (0, r.YB)();
           return (0, e.jsxs)(Z.Z, {
             stepsProps: { size: 'small' },
-            stepsFormRender: function (h, a) {
+            stepsFormRender: function (g, a) {
               return (0, e.jsx)(_.Z, {
                 width: 640,
                 bodyStyle: { padding: '32px 40px 48px' },
@@ -58,7 +58,7 @@
                 onCancel: function () {
                   d.onCancel();
                 },
-                children: h,
+                children: g,
               });
             },
             onFinish: d.onSubmit,
@@ -87,7 +87,7 @@
                       },
                     ],
                   }),
-                  (0, e.jsx)(B.Z, {
+                  (0, e.jsx)(V.Z, {
                     name: 'desc',
                     width: 'md',
                     label: t.formatMessage({
@@ -203,19 +203,19 @@
                     switch ((a.prev = a.next)) {
                       case 0:
                         return (
-                          (o = g.default.loading('\u6B63\u5728\u6DFB\u52A0')),
+                          (o = h.default.loading('\u6B63\u5728\u6DFB\u52A0')),
                           (a.prev = 1),
                           (a.next = 4),
                           (0, S.HP)((0, H.Z)({}, t))
                         );
                       case 4:
-                        return o(), g.default.success('Added successfully'), a.abrupt('return', !0);
+                        return o(), h.default.success('Added successfully'), a.abrupt('return', !0);
                       case 9:
                         return (
                           (a.prev = 9),
                           (a.t0 = a.catch(1)),
                           o(),
-                          g.default.error('Adding failed, please try again!'),
+                          h.default.error('Adding failed, please try again!'),
                           a.abrupt('return', !1)
                         );
                       case 14:
@@ -243,7 +243,7 @@
                     switch ((a.prev = a.next)) {
                       case 0:
                         return (
-                          (o = g.default.loading('Configuring')),
+                          (o = h.default.loading('Configuring')),
                           (a.prev = 1),
                           (a.next = 4),
                           (0, S.D7)({ name: t.name, desc: t.desc, key: t.key })
@@ -251,7 +251,7 @@
                       case 4:
                         return (
                           o(),
-                          g.default.success('Configuration is successful'),
+                          h.default.success('Configuration is successful'),
                           a.abrupt('return', !0)
                         );
                       case 9:
@@ -259,7 +259,7 @@
                           (a.prev = 9),
                           (a.t0 = a.catch(1)),
                           o(),
-                          g.default.error('Configuration failed, please try again!'),
+                          h.default.error('Configuration failed, please try again!'),
                           a.abrupt('return', !1)
                         );
                       case 14:
@@ -286,7 +286,7 @@
                   for (;;)
                     switch ((a.prev = a.next)) {
                       case 0:
-                        if (((o = g.default.loading('\u6B63\u5728\u5220\u9664')), t)) {
+                        if (((o = h.default.loading('\u6B63\u5728\u5220\u9664')), t)) {
                           a.next = 3;
                           break;
                         }
@@ -304,7 +304,7 @@
                       case 6:
                         return (
                           o(),
-                          g.default.success('Deleted successfully and will refresh soon'),
+                          h.default.success('Deleted successfully and will refresh soon'),
                           a.abrupt('return', !0)
                         );
                       case 11:
@@ -312,7 +312,7 @@
                           (a.prev = 11),
                           (a.t0 = a.catch(3)),
                           o(),
-                          g.default.error('Delete failed, please try again'),
+                          h.default.error('Delete failed, please try again'),
                           a.abrupt('return', !1)
                         );
                       case 16:
@@ -334,15 +334,15 @@
           var d = (0, M.useState)(!1),
             t = (0, x.Z)(d, 2),
             o = t[0],
-            h = t[1],
+            g = t[1],
             a = (0, M.useState)(!1),
             F = (0, x.Z)(a, 2),
             ie = F[0],
             w = F[1],
             oe = (0, M.useState)(!1),
-            V = (0, x.Z)(oe, 2),
-            E = V[0],
-            I = V[1],
+            B = (0, x.Z)(oe, 2),
+            E = B[0],
+            I = B[1],
             j = (0, M.useRef)(),
             ce = (0, M.useState)(),
             L = (0, x.Z)(ce, 2),
@@ -520,7 +520,7 @@
                       {
                         type: 'primary',
                         onClick: function () {
-                          h(!0);
+                          g(!0);
                         },
                         children: [
                           (0, e.jsx)(K.Z, {}),
@@ -532,7 +532,7 @@
                     ),
                   ];
                 },
-                request: S.jR,
+                request: S.rule,
                 columns: U,
                 rowSelection: {
                   onChange: function (l, n) {
@@ -617,7 +617,7 @@
                 }),
                 width: '400px',
                 visible: o,
-                onVisibleChange: h,
+                onVisibleChange: g,
                 onFinish: (function () {
                   var u = (0, v.Z)(
                     i().mark(function l(n) {
@@ -628,7 +628,7 @@
                             case 0:
                               return (c.next = 2), re(n);
                             case 2:
-                              (m = c.sent), m && (h(!1), j.current && j.current.reload());
+                              (m = c.sent), m && (g(!1), j.current && j.current.reload());
                             case 4:
                             case 'end':
                               return c.stop();
@@ -654,7 +654,7 @@
                     width: 'md',
                     name: 'name',
                   }),
-                  (0, e.jsx)(B.Z, { width: 'md', name: 'desc' }),
+                  (0, e.jsx)(V.Z, { width: 'md', name: 'desc' }),
                 ],
               }),
               (0, e.jsx)(te, {
