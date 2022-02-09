@@ -15,8 +15,6 @@ type Myimg = {
 const Index = () => {
   const [key, setkey] = useState('');
   const [imageUrl, setimageUrl] = useState('');
-  const [loading, setloading] = useState(false);
-  const [imagetoken, setimagetoken] = useState('');
   const [imgList, setimgList] = useState<Myimg[]>([]);
   const layout = {
     labelCol: { span: 6 },
@@ -52,7 +50,7 @@ const Index = () => {
     };
     await axios({
       method: 'post',
-      url: 'http://localhost:8081/api/upload',
+      url: 'http://117.50.173.128:8081/api/upload',
       data: Qs.stringify(myfilename),
     }).then((res) => {
       //在这里要把东西存起来

@@ -57,6 +57,10 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     const userinfo = JSON.parse(localStorage.getItem('userinfo'));
     setuserinfo(userinfo);
     console.log('userinfo: ', userinfo);
+    if (userinfo === null) {
+      localStorage.clear();
+      history.push('/user/login');
+    }
   }, []);
   // const loading = (
   //   <span className={`${styles.action} ${styles.account}`}>
