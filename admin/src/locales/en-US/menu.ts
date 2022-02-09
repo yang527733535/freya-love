@@ -2,6 +2,8 @@ export default {
   'menu.welcome': 'Welcome',
   'menu.more-blocks': 'More Blocks',
   'menu.home': 'Home',
+  'menu.视频管理': '视频管理',
+  'menu.图片管理': '图片管理',
   'menu.admin': 'Admin',
   'menu.admin.sub-page': 'Sub-Page',
   'menu.login': 'Login',

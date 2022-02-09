@@ -8,7 +8,7 @@
     "test": "umi-test",
     "webpack": "umi webpack",
     "test:coverage": "umi-test --coverage",
-    "upload": "umi build && git add . && git commit -m 'task:添加新功能' &&git push prod master &&git push origin master"
+    "upload": " git add . && git commit -m 'task:添加新功能' &&git push prod master &&git push origin master"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

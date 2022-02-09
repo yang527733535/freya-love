@@ -23,10 +23,17 @@ declare namespace API {
     phone?: string;
   };
 
+  type nowUser = {};
+
   type LoginResult = {
-    status?: string;
-    type?: string;
+    name?: string;
+    telephone?: string;
     currentAuthority?: string;
+  };
+  type MyLoginResult = {
+    code?: number;
+    data?: { token?: string };
+    msg?: string;
   };
 
   type PageParams = {
@@ -65,6 +72,11 @@ declare namespace API {
     username?: string;
     password?: string;
     autoLogin?: boolean;
+    type?: string;
+  };
+  type freyaLoginParams = {
+    telephone?: string;
+    password?: string;
     type?: string;
   };
 

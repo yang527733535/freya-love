@@ -1,17 +1,10 @@
-import {
-  AlipayCircleOutlined,
-  LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
-  UserOutlined,
-  WeiboCircleOutlined,
-} from '@ant-design/icons';
+import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
-import { ProFormCaptcha, ProFormCheckbox, ProFormText, LoginForm } from '@ant-design/pro-form';
+import { ProFormCaptcha, ProFormText, LoginForm } from '@ant-design/pro-form';
 import { useIntl, history, FormattedMessage, SelectLang, useModel } from 'umi';
 import Footer from '@/components/Footer';
-import { login } from '@/services/ant-design-pro/api';
+import { freyalogin, getUserinfo } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 
 import styles from './index.less';
@@ -33,11 +26,20 @@ const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
+  const { currentUser } = initialState || {};
 
   const intl = useIntl();
-
+  console.log('intl: ', intl);
   const fetchUserInfo = async () => {
-    const userInfo = await initialState?.fetchUserInfo?.();
+    const data = await getUserinfo({ token: localStorage.getItem('token') || '' });
+    const { user } = data.data;
+    let userInfo = {
+      name: user.name,
+      avatar:
+        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202002%2F01%2F20200201113037_txvqq.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1646984998&t=80fff58db61c03d7d41a0425b5308c25',
+    };
+    localStorage.setItem('userinfo', JSON.stringify(userInfo));
+    // 如果用户信息存在 则存进去
     if (userInfo) {
       await setInitialState((s) => ({
         ...s,
@@ -49,8 +51,9 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     try {
       // 登录
-      const msg = await login({ ...values, type });
-      if (msg.status === 'ok') {
+      const data = await freyalogin({ ...values, type });
+      localStorage.setItem('token', data.data?.token as string);
+      if (data.msg === '登录成功') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
@@ -64,9 +67,8 @@ const Login: React.FC = () => {
         history.push(redirect || '/');
         return;
       }
-      console.log(msg);
       // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      setUserLoginState(data);
     } catch (error) {
       const defaultLoginFailureMessage = intl.formatMessage({
         id: 'pages.login.failure',
@@ -84,22 +86,10 @@ const Login: React.FC = () => {
       </div>
       <div className={styles.content}>
         <LoginForm
-          logo={<img alt="logo" src="/logo.svg" />}
-          title="Mrhh"
-          subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          title="To Freya Admin"
           initialValues={{
             autoLogin: true,
           }}
-          actions={[
-            <FormattedMessage
-              key="loginWith"
-              id="pages.login.loginWith"
-              defaultMessage="其他登录方式"
-            />,
-            <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
-            <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.icon} />,
-            <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
-          ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}
@@ -112,15 +102,7 @@ const Login: React.FC = () => {
                 defaultMessage: '账户密码登录',
               })}
             />
-            <Tabs.TabPane
-              key="mobile"
-              tab={intl.formatMessage({
-                id: 'pages.login.phoneLogin.tab',
-                defaultMessage: '手机号登录',
-              })}
-            />
           </Tabs>
-
           {status === 'error' && loginType === 'account' && (
             <LoginMessage
               content={intl.formatMessage({
@@ -132,15 +114,12 @@ const Login: React.FC = () => {
           {type === 'account' && (
             <>
               <ProFormText
-                name="username"
+                name="telephone"
                 fieldProps={{
                   size: 'large',
                   prefix: <UserOutlined className={styles.prefixIcon} />,
                 }}
-                placeholder={intl.formatMessage({
-                  id: 'pages.login.username.placeholder',
-                  defaultMessage: '用户名: admin or user',
-                })}
+                placeholder="请输入手机号码"
                 rules={[
                   {
                     required: true,
@@ -159,10 +138,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <LockOutlined className={styles.prefixIcon} />,
                 }}
-                placeholder={intl.formatMessage({
-                  id: 'pages.login.password.placeholder',
-                  defaultMessage: '密码: ant.design',
-                })}
+                placeholder="请输入密码"
                 rules={[
                   {
                     required: true,
@@ -264,18 +240,7 @@ const Login: React.FC = () => {
             style={{
               marginBottom: 24,
             }}
-          >
-            <ProFormCheckbox noStyle name="autoLogin">
-              <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
-            </ProFormCheckbox>
-            <a
-              style={{
-                float: 'right',
-              }}
-            >
-              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
-            </a>
-          </div>
+          ></div>
         </LoginForm>
       </div>
       <Footer />
