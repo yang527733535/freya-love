@@ -10,9 +10,6 @@
     "test:coverage": "umi-test --coverage",
     "upload": " git add . && git commit -m 'task:添加新功能' &&git push prod master &&git push origin master"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
       "prettier --write"
