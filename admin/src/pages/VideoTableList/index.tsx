@@ -20,7 +20,8 @@ import { rule, addRule, updateRule, removeRule } from '@/services/ant-design-pro
 const handleAdd = async (fields: API.RuleListItem) => {
   const hide = message.loading('正在添加');
   try {
-    await addRule({ ...fields });
+    console.log(fields);
+    await addRule(fields, '123');
     hide();
     message.success('Added successfully');
     return true;

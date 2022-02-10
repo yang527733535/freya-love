@@ -2,11 +2,11 @@
 /* eslint-disable */
 import { request } from 'umi';
 
-const baseUrl = 'http://117.50.173.128:8081';
+const tokenString = 'Bearer ' + localStorage.getItem('token');
 export async function currentUser(options?: { [key: string]: any }) {
   return request<{
     data: API.CurrentUser;
-  }>(`${baseUrl}/api/auth/info`, {
+  }>(`/api/auth/info`, {
     method: 'GET',
     headers: {
       authorization: 'Bearer ' + options!.token,
@@ -18,7 +18,7 @@ export async function currentUser(options?: { [key: string]: any }) {
 export async function getUserinfo(options?: { [key: string]: any }) {
   return request<{
     data: any;
-  }>(`${baseUrl}/api/auth/info`, {
+  }>(`/api/auth/info`, {
     method: 'GET',
     headers: {
       authorization: 'Bearer ' + options!.token,
@@ -48,7 +48,7 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
 }
 
 export async function freyalogin(body: API.freyaLoginParams, options?: { [key: string]: any }) {
-  return request<API.MyLoginResult>(`${baseUrl}/api/auth/login`, {
+  return request<API.MyLoginResult>(`/api/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -69,22 +69,18 @@ export async function getNotices(options?: { [key: string]: any }) {
 /** 获取规则列表 GET /api/rule */
 export async function Imgrule(
   params: {
-    // query
-    /** 当前的页码 */
     current?: number;
-    /** 页面的容量 */
     pageSize?: number;
   },
   options?: { [key: string]: any },
 ) {
-  const data = request<API.RuleList>(`${baseUrl}/images/page/list`, {
+  const data = request<API.RuleList>(`/api/images/page/list`, {
     method: 'POST',
     params: {
       ...params,
     },
     ...(options || {}),
   });
-  console.log('data', data);
   return data;
 }
 
@@ -97,16 +93,16 @@ export async function updateRule(options?: { [key: string]: any }) {
 }
 
 /** 新建规则 POST /api/rule */
-export async function addRule(options?: { [key: string]: any }) {
-  return request<API.RuleListItem>('/api/rule', {
+export async function addRule(options?: { [key: string]: any }, id?: string) {
+  return request<API.RuleListItem>(`/api/rule/${id}`, {
     method: 'POST',
     ...(options || {}),
   });
 }
 export async function reqAddImg(params?: { [key: string]: any }) {
-  return request(`${baseUrl}/images`, {
+  return request(`/api/images`, {
     headers: {
-      authorization: 'Bearer ' + localStorage.getItem('token'),
+      authorization: tokenString,
     },
     params: {
       ...params,
@@ -115,6 +111,25 @@ export async function reqAddImg(params?: { [key: string]: any }) {
   });
 }
 
+// export async function updateImg(params?: { [key: string]: any }) {
+//   return request(`${baseUrl}/images/${params!.id}`, {
+//     headers: {
+//       authorization: 'Bearer ' + localStorage.getItem('token'),
+//     },
+//     data: params,
+//     method: 'PUT',
+//   });
+// }
+
+export async function updateImg(options?: { [key: string]: any }) {
+  return request(`/api/images/${options!.id}`, {
+    method: 'PUT',
+    headers: {
+      authorization: tokenString,
+    },
+    params: options,
+  });
+}
 /** 删除规则 DELETE /api/rule */
 export async function removeRule(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/rule', {

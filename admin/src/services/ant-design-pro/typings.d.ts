@@ -22,9 +22,7 @@ declare namespace API {
     address?: string;
     phone?: string;
   };
-
   type nowUser = {};
-
   type LoginResult = {
     name?: string;
     telephone?: string;
@@ -35,12 +33,10 @@ declare namespace API {
     data?: { token?: string };
     msg?: string;
   };
-
   type PageParams = {
     current?: number;
     pageSize?: number;
   };
-
   type RuleListItem = {
     key?: number;
     disabled?: boolean;
@@ -55,6 +51,19 @@ declare namespace API {
     createdAt?: string;
     progress?: number;
   };
+  type ImgItem = {
+    Category?: string;
+    category_id?: number;
+    content?: string;
+    created_at?: string;
+    id?: string;
+    img_url?: string;
+    show_time?: string;
+    title?: string;
+    updated_at?: string;
+    user_id?: number;
+  };
+
   type imgListItem = {
     category_id?: number;
     content?: string;

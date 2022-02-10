@@ -11,7 +11,7 @@ export default {
     // localhost:8000/api/** -> https://preview.pro.ant.design/api/**
     '/api/': {
       // 要代理的地址
-      target: 'https://preview.pro.ant.design',
+      target: 'http://117.50.173.128:8081',
       // 配置了这个可以从 http 代理到 https
       // 依赖 origin 的功能可能需要这个，比如 cookie
       changeOrigin: true,
@@ -19,16 +19,16 @@ export default {
   },
   test: {
     '/api/': {
-      target: 'https://proapi.azurewebsites.net',
+      target: 'http://117.50.173.128:8081',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      // pathRewrite: { '^': '' },
     },
   },
-  pre: {
-    '/api/': {
-      target: 'your pre url',
-      changeOrigin: true,
-      pathRewrite: { '^': '' },
-    },
-  },
+  // pre: {
+  //   '/api/': {
+  //     target: 'http://117.50.173.128',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^': '' },
+  //   },
+  // },
 };
