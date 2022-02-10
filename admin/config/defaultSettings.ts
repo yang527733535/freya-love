@@ -5,17 +5,17 @@ const Settings: LayoutSettings & {
   logo?: string;
 } = {
   navTheme: 'light',
-  // 拂晓蓝
-  primaryColor: '#1890ff',
-  layout: 'mix',
-  contentWidth: 'Fluid',
+  primaryColor: '#13C2C2',
+  layout: 'top',
+  contentWidth: 'Fixed',
   fixedHeader: false,
   fixSiderbar: true,
-  colorWeak: false,
-  title: 'Freya',
   pwa: false,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-  iconfontUrl: '',
+  headerHeight: 48,
+  footerRender: false,
+  menuHeaderRender: false,
+  splitMenus: false,
 };
 
 export default Settings;

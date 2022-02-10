@@ -84,6 +84,24 @@ export async function Imgrule(
   return data;
 }
 
+/** 获取规则列表 GET /api/rule */
+export async function Videorule(
+  params: {
+    current?: number;
+    pageSize?: number;
+  },
+  options?: { [key: string]: any },
+) {
+  const data = request<API.RuleList>(`/api/videos/page/list`, {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+  return data;
+}
+
 /** 新建规则 PUT /api/rule */
 export async function updateRule(options?: { [key: string]: any }) {
   return request<API.RuleListItem>('/api/rule', {
@@ -111,6 +129,18 @@ export async function reqAddImg(params?: { [key: string]: any }) {
   });
 }
 
+export async function reqAddVideos(params?: { [key: string]: any }) {
+  return request(`/api/videos`, {
+    headers: {
+      authorization: tokenString,
+    },
+    params: {
+      ...params,
+    },
+    method: 'POST',
+  });
+}
+
 // export async function updateImg(params?: { [key: string]: any }) {
 //   return request(`${baseUrl}/images/${params!.id}`, {
 //     headers: {
@@ -123,6 +153,17 @@ export async function reqAddImg(params?: { [key: string]: any }) {
 
 export async function updateImg(options?: { [key: string]: any }) {
   return request(`/api/images/${options!.id}`, {
+    method: 'PUT',
+    headers: {
+      authorization: tokenString,
+    },
+    params: options,
+  });
+}
+
+
+export async function updateVideo(options?: { [key: string]: any }) {
+  return request(`/api/videos/${options!.id}`, {
     method: 'PUT',
     headers: {
       authorization: tokenString,
