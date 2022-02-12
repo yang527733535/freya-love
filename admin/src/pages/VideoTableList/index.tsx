@@ -9,6 +9,8 @@ import ImgForm from './Form/index';
 export default function ImgTable() {
   const actionRef = useRef<ActionType>();
   const [showForm, setshowForm] = useState<boolean>();
+  const [videoUrl, setvideoUrl] = useState();
+  const [videoModal, setvideoModal] = useState(false);
   const [clickItem, setclickItem] = useState<API.ImgItem>();
   const columns = [
     {
@@ -26,6 +28,22 @@ export default function ImgTable() {
       title: '内容',
       dataIndex: 'content',
       ellipsis: true,
+    },
+    {
+      title: '视频地址',
+      dataIndex: 'video_url',
+      render: (record: any) => {
+        return (
+          <a
+            onClick={() => {
+              setvideoModal(true);
+              setvideoUrl(record);
+            }}
+          >
+            预览视频
+          </a>
+        );
+      },
     },
     {
       title: '展示时间',
@@ -60,6 +78,22 @@ export default function ImgTable() {
   ];
   return (
     <div>
+      <Modal
+        destroyOnClose
+        onCancel={() => {
+          setvideoModal(false);
+        }}
+        title="查看视频"
+        visible={videoModal}
+      >
+        <video
+          style={{ width: '100%' }}
+          controls={true}
+          src={`http://cdnoss.stardustgod.com/${videoUrl}`}
+        >
+          您的浏览器不支持 video 标签。
+        </video>
+      </Modal>
       <Modal
         onCancel={() => {
           setshowForm(false);
