@@ -24,11 +24,16 @@ const Discover: FC<IProps> = ({}: IProps): ReactElement => {
   return (
     <div className={styles['myDiscoverBox']}>
       <BookCarouselImg bannerItem={bannerItem}></BookCarouselImg>
+      {/* <NormalBookShelf></NormalBookShelf>
       <NormalBookShelf></NormalBookShelf>
       <NormalBookShelf></NormalBookShelf>
-      <NormalBookShelf></NormalBookShelf>
-      <NormalBookShelf></NormalBookShelf>
-      <div>瀑布流</div>
+      <NormalBookShelf></NormalBookShelf> */}
+      <div>
+        <h1>网址正在建设中</h1>
+        <a href="https://beian.miit.gov.cn">
+          <h1 style={{ color: 'blue' }}>粤ICP备2022016405号</h1>
+        </a>
+      </div>
     </div>
   );
 };
