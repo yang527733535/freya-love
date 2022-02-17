@@ -61,12 +61,10 @@ export default defineConfig({
     'primary-color': '#9676FF',
   },
   proxy: {
-    '/ga/': {
-      target: 'http://dev-chapters-int.stardustgod.com/',
+    '/api/': {
+      // 要代理的地址
+      target: 'http://117.50.173.128:8081',
       changeOrigin: true,
-      pathRewrite: {
-        '^': '',
-      },
     },
   },
 });

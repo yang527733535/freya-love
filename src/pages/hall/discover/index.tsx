@@ -1,37 +1,36 @@
 import React, { FC, ReactElement, useRef, useEffect, useState } from 'react';
-import BookCarouselImg from './CarouselImg';
 import styles from './index.less';
-import NormalBookShelf from './normalBookShelf';
-import { reqgetHallDataApi } from '@/api/hall';
-import { HallList } from './typings';
-import { useDebounce } from '@/utils/customerhook';
-import { useMount } from '@/utils/customerhook';
+import ImgItem from './imageitem/index';
+import { imglist } from '@/api/hall';
 interface IProps {}
 const Discover: FC<IProps> = ({}: IProps): ReactElement => {
-  const [bannerItem, setbannerItem] = useState<any>();
-  const getHallData = async () => {
+  useEffect(() => {
+    getInitData();
+  }, []);
+  const getInitData = async () => {
     let param = {
-      version: '618',
+      pageNum: 1,
+      pageSize: 10,
     };
-    let data: HallList = await reqgetHallDataApi(param);
+    let data = await imglist(param);
     console.log('data: ', data);
-    // setbannerItem(data.data.list[1]);
   };
-  const [inputValue, setinputValue] = useState<any>();
-  useMount(getHallData);
-
-  const dbvalue = useDebounce(inputValue, 1000);
   return (
     <div className={styles['myDiscoverBox']}>
-      <BookCarouselImg bannerItem={bannerItem}></BookCarouselImg>
-      {/* <NormalBookShelf></NormalBookShelf>
-      <NormalBookShelf></NormalBookShelf>
-      <NormalBookShelf></NormalBookShelf>
-      <NormalBookShelf></NormalBookShelf> */}
-      <div>
-        <h1>网址正在建设中</h1>
+      <div className={styles['imgBox']}>
+        <ImgItem></ImgItem>
+        <ImgItem></ImgItem>
+      </div>
+
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 60,
+          // zIndex: 40,
+        }}
+      >
         <a href="https://beian.miit.gov.cn">
-          <h1 style={{ color: 'blue' }}>粤ICP备2022016405号</h1>
+          <span style={{ color: 'blue' }}>粤ICP备2022016405号</span>
         </a>
       </div>
     </div>

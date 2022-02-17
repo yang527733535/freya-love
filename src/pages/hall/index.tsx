@@ -36,7 +36,7 @@ const Hall: FC<Iprops> = ({}): ReactElement => {
           <Discover />
         </TabPane>
         <TabPane style={{ overflow: 'auto' }} tab="Videos" key="Category">
-          <div className={styles.CATE}>123</div>
+          {/* <div className={styles.CATE}>123</div> */}
         </TabPane>
       </Tabs>
     </div>

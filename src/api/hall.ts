@@ -36,10 +36,12 @@ export async function reqgetHallDataApi(params: reqgetHallDataApiProps) {
 }
 
 //用户登录注册接口
-export async function LoginApi(params: LoginApiProps) {
-  return request('/ga/v1/user/register', {
+
+// LoginApiProps
+
+export async function imglist(params) {
+  return request('/api/images/page/list', {
     method: 'post',
     data: params,
   });
 }
-// LoginApiProps
