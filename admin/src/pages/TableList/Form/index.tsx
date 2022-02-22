@@ -19,6 +19,7 @@ interface Iprops {
 }
 const Index: FC<Iprops> = ({ closeModal, clickItem = null }) => {
   const [imgList, setimgList] = useState<Myimg[] | undefined>([]);
+
   const [form] = Form.useForm();
   const layout = {
     labelCol: { span: 6 },
@@ -52,59 +53,31 @@ const Index: FC<Iprops> = ({ closeModal, clickItem = null }) => {
     }
   };
 
-  async function mycustomRequest({
-    file,
-    headers,
-    onError,
-    onProgress,
-    onSuccess,
-    withCredentials,
-  }) {
-    //在这里暂停一秒
-    const myfilename = {
-      FileName: file.name,
-    };
-    await axios({
-      method: 'post',
-      url: 'http://117.50.173.128:8081/api/upload',
-      data: Qs.stringify(myfilename),
-    }).then((res) => {
-      //在这里要把东西存起来
-      const imagetoken = res.data.data.put;
-      const imageUrl = res.data.data.get;
-      const key = res.data.data.key;
-      const reader = new FileReader();
-      reader.readAsArrayBuffer(file);
-      let fileData = null;
-      reader.onload = (e) => {
-        // 在文件读取结束后执行的操作
-        fileData = e.target.result;
-        console.log('fileData: ', fileData);
-        // 使用 axios 进行文件上传的请求
-        console.log('123----imagetoken', imagetoken);
-        axios
-          .put(imagetoken, fileData, {
-            withCredentials,
-            headers,
-            onUploadProgress: ({ total, loaded }) => {
-              // 进行上传进度输出，更加直观
-              onProgress({ percent: Math.round((loaded / total) * 100).toFixed(2) }, file);
-            },
-          })
-          .then((response) => {
-            console.log(response);
-            onSuccess(response, file);
-            let img = {
-              id: genID(10),
-              imgurl: key,
-            };
-            console.log(img);
-            setimgList([...imgList, img]);
-          })
-          .catch(onError);
-      };
-    });
-  }
+  const props = {
+    name: 'special_effects',
+    action: 'http://dev-chapters-back.stardustgod.com/api/common/uploadSpecialEffects',
+    headers: {
+      Authorization:
+        'Bearer eyJpdiI6ImdkY1JkUHJOWnZGYVF5MkFxMWtpUEE9PSIsInZhbHVlIjoieDJ3SDJYNGphbEljQUxjd1ZHY1RtQ2gzWWRLWTYrbXhnUEdtOEJzK2RcL3M1T25NMWtNMG9vWEc3YzFHTytUeFByXC9aXC9LcjRCOXhTd08yVGFIUkNNbjBzR1Y2Y2pBZ0xqRSt6TVZlVXpMWEN6OTR3OUFzZnFpVjZuM1pNT20rbmJWZVVYYkxQU0VUOXhwbzBNWU5la21zd3RYSHVUa0E2NTdZc0FJelJFMkdnK2trNE8wdWJaSEZncFhId1ZQMnk3dzNrd29VY2V3TlpHZXhuSEVaNU1TSFhXVUJ4dzN6bGs0YUlOMlNRRFpFa2Fyeld2NDBXZWxsM2oyWmpzeDhyY0toWEVQYkVRNFVieGxvMG1COUNwaUhMdnZnXC9uQ1wvUzFjV3ByRElPRFR0QXpyNGpmQzFEUnVLek51VElQRk5XSTF2ZnQ3TXhkY3hmaXAwV053aUFvQ3pEWVhqVmphbEhjSkdkRUE0eHpTVFJqUHIyQVVkbEdPaFhsZzRFS09HbEhGMjN2Ym5ZOWpIWnlEdlB1U0ZpbFp2NElrSG5KTmlHKzU5ZklXMXF3bDRuNkQrRklTRjQxVENUclFOamJNaXVmUXZMTVo5Vkx4VjlaSU9LSE5Wckc4TFUyaXJVM1MreWJGRTlnNUE0NVVCb1duZUxzaHRJR1RZNVB2OWNqZTNtSENjV2h6WWNkUXZIa1huT1lqVkhlSmc9PSIsIm1hYyI6ImJiNWZjYTdlOWI2YWIxZTY0MDJiYjEyYTRhYzY5NGFlYjRhNDJlYWRmNmYxOTIwOTJkNjFiMWIwZmRmZTM4NjUifQ',
+    },
+    onChange(info: any) {
+      if (info.file.status !== 'uploading') {
+      }
+      if (info.file.status === 'done') {
+        const mp4data = info.file.response.data;
+        console.log('mp4¸data: ', mp4data);
+        // setvideoUrl(mp4data.url);
+        let img = {
+          id: genID(10),
+          imgurl: mp4data.url,
+        };
+        setimgList([...imgList, img]);
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
   useEffect(() => {
     if (clickItem) {
       console.log('clickItem: ', clickItem);
@@ -141,17 +114,10 @@ const Index: FC<Iprops> = ({ closeModal, clickItem = null }) => {
         <Form.Item name="ShowTime" label="展示时间" rules={[{ required: true }]}>
           <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" style={{ width: '100%' }} />
         </Form.Item>
+
         <Form.Item name="image" label="图片" rules={[{ required: false }]}>
-          <Upload
-            headers={{
-              'Content-Type': 'image/jpeg',
-            }}
-            name="avatar"
-            className="avatar-uploader"
-            showUploadList={false}
-            customRequest={mycustomRequest}
-          >
-            <Button>上传</Button>
+          <Upload {...props}>
+            <Button>Click to Upload</Button>
           </Upload>
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}></Form.Item>
@@ -191,7 +157,7 @@ const Index: FC<Iprops> = ({ closeModal, clickItem = null }) => {
                 </div>
                 <img
                   style={{ width: 100, height: 100 }}
-                  src={'http://myasd.oss-cn-beijing.aliyuncs.com/' + item.imgurl}
+                  src={'http://cdnoss.stardustgod.com/' + item.imgurl}
                   alt=""
                 />
               </div>

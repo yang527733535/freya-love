@@ -36,7 +36,7 @@ const Login: React.FC = () => {
     let userInfo = {
       name: user.name,
       avatar:
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202002%2F01%2F20200201113037_txvqq.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1646984998&t=80fff58db61c03d7d41a0425b5308c25',
+        'http://cdnoss.stardustgod.com/chapters_test/special_effects/202202/6214a1492b085.jpg',
     };
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
     // 如果用户信息存在 则存进去
