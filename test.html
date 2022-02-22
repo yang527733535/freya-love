@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  ; (function () {
+    console.log('立即执行行数')
+    var Cm = function () { }
+    Cm.prototype = {
+      plus: function (a, b) {
+        console.log(a, b)
+        return a + b
+      }
+    }
+    window.Cm = Cm
+  })()
+  var a = new Cm()
+  console.log(a.plus(1, 2))
+</script>
+
+
+<script>
+
+  function Father() {
+    this.car = 'benz'
+  }
+  Father.prototype.money = 1000
+
+  function Son() {
+    this.skill = 'drive'
+  }
+
+  function Zhongjian() {
+  }
+  Zhongjian.prototype = new Father()
+  Son.prototype = Zhongjian.prototype
+  Son.prototype.constructor = Son
+  Son.prototype.age = 12
+  const son = new Son()
+  const father = new Father()
+  console.log(son)
+  console.log(father)
+
+
+</script>
+
+
+</html>
