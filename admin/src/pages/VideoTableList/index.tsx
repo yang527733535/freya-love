@@ -5,7 +5,6 @@ import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable, { TableDropdown } from '@ant-design/pro-table';
 import { Videorule } from '@/services/ant-design-pro/api';
 import ImgForm from './Form/index';
-
 export default function ImgTable() {
   const actionRef = useRef<ActionType>();
   const [showForm, setshowForm] = useState<boolean>();

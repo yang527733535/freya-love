@@ -25,11 +25,8 @@ const LoginMessage: React.FC<{
 const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
-  const { initialState, setInitialState } = useModel('@@initialState');
-  const { currentUser } = initialState || {};
-
+  const { setInitialState } = useModel('@@initialState');
   const intl = useIntl();
-  console.log('intl: ', intl);
   const fetchUserInfo = async () => {
     const data = await getUserinfo({ token: localStorage.getItem('token') || '' });
     const { user } = data.data;
@@ -86,7 +83,7 @@ const Login: React.FC = () => {
       </div>
       <div className={styles.content}>
         <LoginForm
-          title="To Freya Admin"
+          title="Freya Admin"
           initialValues={{
             autoLogin: true,
           }}

@@ -7,6 +7,7 @@ const Settings: LayoutSettings & {
   navTheme: 'light',
   primaryColor: '#13C2C2',
   layout: 'top',
+  title: 'freyaAdmin',
   contentWidth: 'Fixed',
   fixedHeader: false,
   fixSiderbar: true,
