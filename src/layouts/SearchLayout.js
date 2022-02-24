@@ -13,7 +13,7 @@ const Layout = ({ children }) => (
           src={icon_arr}
         ></img>
       </div>
-      <input placeholder="Please enter story or keyword" />
+      {/* <input placeholder="Please enter story or keyword" /> */}
     </div>
     {children}
   </>

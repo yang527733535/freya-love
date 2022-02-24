@@ -2,9 +2,15 @@ import React from 'react';
 import styles from './index.less';
 import { Avatar } from 'antd';
 import ava from '@/assets/avatar.jpg';
+import { history } from 'umi';
 export default function ImgItem() {
   return (
-    <div className={styles.item}>
+    <div
+      onClick={() => {
+        history.push('/search/index');
+      }}
+      className={styles.item}
+    >
       <div className={styles['imghead']}></div>
       <div className={styles['title']}>今天去吃了西餐</div>
       <div className={styles['content']}>

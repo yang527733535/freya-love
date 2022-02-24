@@ -13,14 +13,14 @@ const Hall: FC<Iprops> = ({}): ReactElement => {
         position: 'relative',
       }}
     >
-      <div
+      {/* <div
         onClick={() => {
           history.push('/search/index');
         }}
         className={styles.logoContent}
       >
         <img src={SearchLogo} />
-      </div>
+      </div> */}
       <Tabs
         destroyInactiveTabPane
         className={styles.myTab}
